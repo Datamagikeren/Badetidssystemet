@@ -11,6 +11,8 @@ namespace Badetidssystemet
         private string _adresse;
         private int _antalDeltagere;
 
+        public List<KredsLeder> KredsLedere = new List<KredsLeder>();
+
         
 
         public Kreds(string id, string navn, string adresse, int antalDeltagere)
@@ -19,7 +21,22 @@ namespace Badetidssystemet
             _navn = navn;
             _adresse = adresse;
             _antalDeltagere = antalDeltagere;
-            
+            KredsLedere = new List<KredsLeder>();
+            try
+            {
+                if (_antalDeltagere <= 0)
+                {
+                    
+                    throw new ArgumentException();
+
+                }
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine($"Fejl fundet på Id {_id}: Antal deltagere må ikke være 0!");
+                
+            }
+
         }
 
         public string Id
@@ -45,10 +62,16 @@ namespace Badetidssystemet
 
         public override string ToString()
         {
-          
+            string StrToReturn = string.Empty;
+            foreach (var i in KredsLedere)
+            {
 
-            return $"ID: {Id}\nNavn: {Navn}\nAdresse: {Adresse}\nAntal Deltagere: {AntalDeltagere}\n";
+                StrToReturn += i + "\n";
+
+            }
+            return $"ID: {Id}\nNavn: {Navn}\nAdresse: {Adresse}\nAntal Deltagere: {AntalDeltagere}\nKredsleder(e):\n{StrToReturn}";
         }
+        
 
         
     }

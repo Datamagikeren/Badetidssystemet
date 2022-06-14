@@ -46,6 +46,45 @@ namespace Badetidssystemet
             Console.WriteLine();
             Console.WriteLine(b2); //Tester ToString på b1 efter der er blevet slettet 2 objekter til dens collection
 
+            // Opgave 6/7: Test validering
+
+            BadetidsPeriode b4 = new BadetidsPeriode("Tes", DayOfWeek.Wednesday, new DateTime(2023, 07, 06, 05, 00, 00), new DateTime(2022, 07, 06, 04, 00, 00)); // Badetidsperiode objekt oprettet med starttidspunkt efter sluttidspunkt og "Type" på mindre end 4 bogstaver for at teste exception
+            Console.WriteLine(b4);
+
+            Kreds k4 = new Kreds("4", "Test kredsen", "Testvej 2", 0); // Kreds objekt oprettet med 0 deltagere for at teste exception
+            Console.WriteLine(k4);
+            Console.WriteLine();
+
+            // Opgave 9: Implementering af user stories
+            // User story 1:
+
+            // Adder 2 kredse til b1 og b2 kollektionerne:
+            b1.AdderKreds("1", k1);
+            b1.AdderKreds("2", k2);
+            b2.AdderKreds("1", k2);
+            b2.AdderKreds("2", k3);
+
+            // Opretter KredsLeder objekter og tilføjer dem til lister i kredse og tester ToStrings:
+            KredsLeder kl1 = new KredsLeder(29, "Jonas", "Løve", true);
+            KredsLeder kl2 = new KredsLeder(24, "Benjamin", "Fisk", false);
+            KredsLeder kl3 = new KredsLeder(49, "Bent", "Vægt", false);
+            k1.KredsLedere.Add(kl1);
+            k1.KredsLedere.Add(kl2);
+            k2.KredsLedere.Add(kl3);
+            Console.WriteLine(k1);
+            Console.WriteLine(k2);
+
+
+
+
+
+            BadetidsPeriodeForLoopAndList b10 = new BadetidsPeriodeForLoopAndList("TestAfNedarvning", DayOfWeek.Friday, new DateTime(2022, 07, 08, 15, 30, 00), new DateTime(2022, 07, 08, 18, 30, 00));
+            b10.AdderKreds("1", k1);
+            b10.AdderKreds("2", k2);
+            b10.AdderKreds("3", k3);
+            Console.WriteLine(b10);
+
+
 
 
 
